@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
     public GameObject useLabel;
     public float interactionDistance = 3f;
     public GameObject useTarget;
-
     public ArrayList items = new ArrayList();
 
     // Update is called once per frame
@@ -30,7 +29,7 @@ public class Player : MonoBehaviour
 
         useLabel.SetActive(targetedAction != null && targetedAction.canUse());
 
-        if (Input.GetButtonUp("Use") && targetedAction != null)
+        if (Input.GetMouseButtonUp(0) && targetedAction != null)
         {
             targetedAction.OnUsed();
         }

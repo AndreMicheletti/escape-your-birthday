@@ -9,6 +9,8 @@ public class MoveAction : ClickAction
     public Vector3 targetPos;
     public float speed = 1.0f;
 
+    public AudioSource audioSource;
+
     public Player player;
 
     public string requiredItem = "";
@@ -50,6 +52,9 @@ public class MoveAction : ClickAction
             Debug.Log(initialPos);
             moving = true;
             activated = false;
+        }
+        if (audioSource != null) {
+            audioSource.Play();
         }
     }
 

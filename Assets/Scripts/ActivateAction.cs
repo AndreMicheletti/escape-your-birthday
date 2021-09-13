@@ -7,6 +7,7 @@ public class ActivateAction : ClickAction
     public Player player;
     public GameObject target;
     public string requiredItem = "";
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,10 @@ public class ActivateAction : ClickAction
     public override void OnUsed()
     {
         if (!canUse()) return;
+        if (audioSource != null) {
+            audioSource.priority = 0;
+            audioSource.Play();
+        }
         target.SetActive(true);
     }
 }

@@ -8,6 +8,7 @@ public class ActivateColor : ClickAction
     public string color;
     public Camera playerCamera;
     public Light dirLight;
+    public AudioSource audioSource;
     private void Start() {
         tag = "Clickable";
     }
@@ -44,9 +45,14 @@ public class ActivateColor : ClickAction
                 camColor = Color.white;
                 break;
         }
-
-        Debug.Log("Changing Color to " + color);
-        playerCamera.cullingMask = 63 + colorMask;
-        dirLight.color = camColor;
+        if (dirLight.color != camColor) {
+            Debug.Log("Changing Color to " + color);
+            playerCamera.cullingMask = 63 + colorMask;
+            dirLight.color = camColor;
+            if (audioSource != null) {
+                audioSource.Play();
+            }
+            dirLight.intensity = 1f;
+        }
     }
 }

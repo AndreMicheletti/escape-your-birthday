@@ -6,8 +6,8 @@ public class CodeInputAction : ClickAction
 {
 
     public CodePanel codePanel;
-
     public string inputValue;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,10 @@ public class CodeInputAction : ClickAction
     public override void OnUsed () {
         if (!canUse()) return;
         codePanel.onInput(inputValue);
+        if (audioSource != null) {
+            audioSource.priority = 0;
+            audioSource.Play();
+        }
     }
 
     public override bool canUse () {
