@@ -9,6 +9,10 @@ public class MoveAction : ClickAction
     public Vector3 targetPos;
     public float speed = 1.0f;
 
+    public Player player;
+
+    public string requiredItem = "";
+
     public bool isToggle = false;
 
     bool activated = false;
@@ -25,12 +29,14 @@ public class MoveAction : ClickAction
     public override bool canUse()
     {
         if (moving) return false;
+        if (requiredItem != "" && !player.hasItem(requiredItem)) return false;
         return isToggle ? true : !activated;
     }
 
     // Start is called before the first frame update
     public override void OnUsed()
     {
+        if (!canUse()) return;
         if (moving || (activated && !isToggle)) {
             return;
         }

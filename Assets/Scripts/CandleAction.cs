@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CandleAction : ClickAction
@@ -13,6 +14,7 @@ public class CandleAction : ClickAction
 
     // Start is called before the first frame update
     public override void OnUsed() {
+        if (!canUse()) return;
         fire.SetActive(true);
         used = true;
         StartCoroutine(consumeCandle());

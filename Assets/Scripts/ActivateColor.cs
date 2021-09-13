@@ -16,9 +16,10 @@ public class ActivateColor : ClickAction
     {
         return true;
     }
-    
+
     public override void OnUsed()
     {
+        if (!canUse()) return;
         int colorMask;
         Color camColor;
         switch (color) {

@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
         useLabel.SetActive(targetedAction != null && targetedAction.canUse());
 
-        if (Input.GetButton("Use") && targetedAction != null)
+        if (Input.GetButtonUp("Use") && targetedAction != null)
         {
             targetedAction.OnUsed();
         }

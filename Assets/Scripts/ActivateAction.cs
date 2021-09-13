@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetItemAction : ClickAction
+public class ActivateAction : ClickAction
 {
     public Player player;
-    public string itemName;
+    public GameObject target;
     public string requiredItem = "";
 
     // Start is called before the first frame update
@@ -17,14 +17,12 @@ public class GetItemAction : ClickAction
     public override bool canUse()
     {
         if (requiredItem != "" && !player.hasItem(requiredItem)) return false;
-        return !player.hasItem(itemName);
+        return !target.activeInHierarchy;
     }
 
     public override void OnUsed()
     {
         if (!canUse()) return;
-        Debug.Log("GET ITEM");
-        player.items.Add(itemName);
-        gameObject.SetActive(false);
+        target.SetActive(true);
     }
 }
