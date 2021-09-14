@@ -8,6 +8,7 @@ public class ActivateAction : ClickAction
     public GameObject target;
     public string requiredItem = "";
     public AudioSource audioSource;
+    public AudioSource deniedAudioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,13 @@ public class ActivateAction : ClickAction
 
     public override void OnUsed()
     {
-        if (!canUse()) return;
+        if (!canUse()) {
+            if (deniedAudioSource != null) {
+                deniedAudioSource.priority = 0;
+                deniedAudioSource.Play();
+            }
+            return;
+        }
         if (audioSource != null) {
             audioSource.priority = 0;
             audioSource.Play();

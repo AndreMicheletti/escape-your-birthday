@@ -10,6 +10,7 @@ public class MoveAction : ClickAction
     public float speed = 1.0f;
 
     public AudioSource audioSource;
+    public AudioSource deniedAudioSource;
 
     public Player player;
 
@@ -26,19 +27,27 @@ public class MoveAction : ClickAction
     private void Start() {
         tag = "Clickable";
         initialPos = targetTransform.localPosition;
+        if (deniedAudioSource != null) deniedAudioSource.priority = 0;
+    }
+
+    bool lacksRequiredItem() {
+        return requiredItem != "" && !player.hasItem(requiredItem);
     }
 
     public override bool canUse()
     {
         if (moving) return false;
-        if (requiredItem != "" && !player.hasItem(requiredItem)) return false;
+        if (lacksRequiredItem()) return false;
         return isToggle ? true : !activated;
     }
 
     // Start is called before the first frame update
     public override void OnUsed()
     {
-        if (!canUse()) return;
+        if (!canUse()) {
+            if (lacksRequiredItem() && deniedAudioSource != null) deniedAudioSource.Play();
+            return;
+        }
         if (moving || (activated && !isToggle)) {
             return;
         }
