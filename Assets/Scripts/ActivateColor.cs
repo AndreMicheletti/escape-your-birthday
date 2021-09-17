@@ -17,6 +17,10 @@ public class ActivateColor : ClickAction
     {
         return true;
     }
+    public override string getActionName()
+    {
+        return "interact";
+    }
 
     public override void OnUsed()
     {
@@ -47,7 +51,8 @@ public class ActivateColor : ClickAction
         }
         if (dirLight.color != camColor) {
             Debug.Log("Changing Color to " + color);
-            playerCamera.cullingMask = 63 + colorMask;
+            int layer = 63 + colorMask;
+            playerCamera.cullingMask = layer;
             dirLight.color = camColor;
             if (audioSource != null) {
                 audioSource.Play();

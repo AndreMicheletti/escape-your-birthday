@@ -6,6 +6,7 @@ public class CandleAction : ClickAction
 {
     public Player player;
     public GameObject fire;
+    public GameObject key;
     bool used = false;
 
     private void Start() {
@@ -19,6 +20,10 @@ public class CandleAction : ClickAction
         used = true;
         StartCoroutine(consumeCandle());
     }
+    public override string getActionName()
+    {
+        return "light candle";
+    }
 
     IEnumerator consumeCandle()
     {
@@ -29,6 +34,7 @@ public class CandleAction : ClickAction
         yield return new WaitForSeconds(3);
 
         gameObject.SetActive(false);
+        key.SetActive(true);
     }
 
     public override bool canUse() {

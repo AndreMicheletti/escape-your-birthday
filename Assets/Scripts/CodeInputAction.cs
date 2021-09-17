@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CodeInputAction : ClickAction
 {
-
+    public string buttonName;
     public CodePanel codePanel;
     public string inputValue;
     public AudioSource audioSource;
@@ -13,6 +13,11 @@ public class CodeInputAction : ClickAction
     void Start()
     {
         tag = "Clickable";
+    }
+
+    public override string getActionName()
+    {
+        return "press " + buttonName;
     }
 
     public override void OnUsed () {

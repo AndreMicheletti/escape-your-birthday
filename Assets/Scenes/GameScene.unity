@@ -1386,6 +1386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7682061dfdea4c8c5a2f1aa4db271317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonName: Green Button
   codePanel: {fileID: 574679290}
   inputValue: 2
   audioSource: {fileID: 110370526}
@@ -1643,6 +1644,7 @@ GameObject:
   - component: {fileID: 143428170}
   - component: {fileID: 143428171}
   - component: {fileID: 143428172}
+  - component: {fileID: 143428173}
   m_Layer: 8
   m_Name: Corkscrew
   m_TagString: Untagged
@@ -1791,6 +1793,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!23 &143428173
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143428168}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &147380685
 GameObject:
   m_ObjectHideFlags: 0
@@ -2477,7 +2520,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 92.7}
-  m_SizeDelta: {x: 297.75873, y: 66.1864}
+  m_SizeDelta: {x: 500, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &315452543
 MonoBehaviour:
@@ -2493,7 +2536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.3882353}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3713,6 +3756,7 @@ MonoBehaviour:
   requiredItem: Pen Drive
   audioSource: {fileID: 453912932}
   deniedAudioSource: {fileID: 0}
+  actionName: 
 --- !u!82 &453912932
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3821,6 +3865,7 @@ GameObject:
   - component: {fileID: 460817214}
   - component: {fileID: 460817215}
   - component: {fileID: 460817216}
+  - component: {fileID: 460817217}
   m_Layer: 9
   m_Name: ExitKey
   m_TagString: Untagged
@@ -3971,6 +4016,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!23 &460817217
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460817212}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &472333326
 GameObject:
   m_ObjectHideFlags: 0
@@ -3983,6 +4069,7 @@ GameObject:
   - component: {fileID: 472333330}
   - component: {fileID: 472333329}
   - component: {fileID: 472333328}
+  - component: {fileID: 472333331}
   m_Layer: 0
   m_Name: WineKey
   m_TagString: Clickable
@@ -4134,6 +4221,47 @@ CapsuleCollider:
   m_Height: 0.34
   m_Direction: 0
   m_Center: {x: -0.08, y: 0.51, z: -0.01}
+--- !u!23 &472333331
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472333326}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &493509277
 GameObject:
   m_ObjectHideFlags: 0
@@ -4376,6 +4504,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1129895495175522, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264833946912854, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1264833946912854, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4387,6 +4523,10 @@ PrefabInstance:
     - target: {fileID: 1743903104223250, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_Name
       value: FirstPerson-AIO
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743903104223250, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4448068258976056, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_RootOrder
@@ -4945,6 +5085,7 @@ MonoBehaviour:
   audioSource: {fileID: 574679291}
   deniedAudioSource: {fileID: 0}
   player: {fileID: 2136375290}
+  objectName: 
   requiredItem: 
   isToggle: 0
 --- !u!114 &574679290
@@ -5941,6 +6082,7 @@ GameObject:
   - component: {fileID: 770688505}
   - component: {fileID: 770688504}
   - component: {fileID: 770688507}
+  - component: {fileID: 770688508}
   m_Layer: 0
   m_Name: MainCandle
   m_TagString: Clickable
@@ -5973,8 +6115,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 0.65
+  m_Height: 2.93
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &770688505
@@ -6040,6 +6182,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2136375290}
   fire: {fileID: 1929820866}
+  key: {fileID: 791611474}
+--- !u!54 &770688508
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770688502}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &791611474
 GameObject:
   m_ObjectHideFlags: 0
@@ -6052,13 +6211,14 @@ GameObject:
   - component: {fileID: 791611477}
   - component: {fileID: 791611476}
   - component: {fileID: 791611478}
+  - component: {fileID: 791611479}
   m_Layer: 0
   m_Name: CandleKey
   m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &791611475
 Transform:
   m_ObjectHideFlags: 0
@@ -6203,6 +6363,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!23 &791611479
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791611474}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &794039722
 GameObject:
   m_ObjectHideFlags: 0
@@ -6644,6 +6845,7 @@ GameObject:
   - component: {fileID: 890100078}
   - component: {fileID: 890100079}
   - component: {fileID: 890100080}
+  - component: {fileID: 890100081}
   m_Layer: 9
   m_Name: Knife
   m_TagString: Untagged
@@ -6792,6 +6994,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!23 &890100081
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890100076}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &890836311
 GameObject:
   m_ObjectHideFlags: 0
@@ -7408,7 +7651,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 2, y: 2, z: 5.21}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1072597159
 MeshRenderer:
@@ -7471,6 +7714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7682061dfdea4c8c5a2f1aa4db271317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonName: Red Button
   codePanel: {fileID: 574679290}
   inputValue: 0
   audioSource: {fileID: 1072597162}
@@ -9465,6 +9709,7 @@ MonoBehaviour:
   requiredItem: Exit Key
   audioSource: {fileID: 0}
   deniedAudioSource: {fileID: 1308068617}
+  actionName: 
 --- !u!82 &1308068617
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10014,16 +10259,16 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 38
+    m_FontSize: 27
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 64
+    m_BestFit: 1
+    m_MinSize: 22
+    m_MaxSize: 36
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '[Click] to use'
 --- !u!222 &1439901446
@@ -10460,6 +10705,7 @@ MonoBehaviour:
   audioSource: {fileID: 1503579439}
   deniedAudioSource: {fileID: 1503579438}
   player: {fileID: 2136375290}
+  objectName: 
   requiredItem: Drawer Key
   isToggle: 0
 --- !u!82 &1503579438
@@ -11453,6 +11699,7 @@ MonoBehaviour:
   audioSource: {fileID: 1745015416}
   deniedAudioSource: {fileID: 1745015417}
   player: {fileID: 2136375290}
+  objectName: 
   requiredItem: Bathroom Key
   isToggle: 0
 --- !u!82 &1745015416
@@ -12065,6 +12312,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   deniedAudioSource: {fileID: 0}
   player: {fileID: 2136375290}
+  objectName: 
   requiredItem: Knife
   isToggle: 0
 --- !u!1 &1795558785
@@ -12400,6 +12648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7682061dfdea4c8c5a2f1aa4db271317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonName: Yellow Button
   codePanel: {fileID: 574679290}
   inputValue: 1
   audioSource: {fileID: 1807408220}
@@ -13372,6 +13621,7 @@ MonoBehaviour:
   audioSource: {fileID: 1957370652}
   deniedAudioSource: {fileID: 0}
   player: {fileID: 2136375290}
+  objectName: 
   requiredItem: 
   isToggle: 1
 --- !u!82 &1957370652
@@ -13577,6 +13827,8 @@ GameObject:
   - component: {fileID: 1964480906}
   - component: {fileID: 1964480907}
   - component: {fileID: 1964480908}
+  - component: {fileID: 1964480909}
+  - component: {fileID: 1964480910}
   m_Layer: 6
   m_Name: Lighter
   m_TagString: Clickable
@@ -13727,6 +13979,63 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!23 &1964480909
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964480904}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &1964480910
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964480904}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1983078094
 GameObject:
   m_ObjectHideFlags: 0
@@ -14546,6 +14855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2096579188}
   - component: {fileID: 2096579189}
+  - component: {fileID: 2096579190}
   m_Layer: 0
   m_Name: Cup
   m_TagString: Untagged
@@ -14581,6 +14891,47 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.18431425, y: 0.26, z: 0.19357026}
   m_Center: {x: -0, y: 0.13, z: 0.06}
+--- !u!23 &2096579190
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096579187}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2097752108
 GameObject:
   m_ObjectHideFlags: 0
@@ -15003,6 +15354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useLabel: {fileID: 315452541}
+  useLabelText: {fileID: 1439901445}
   interactionDistance: 3.2
   useTarget: {fileID: 0}
 --- !u!1 &2143952757
@@ -15808,6 +16160,7 @@ MonoBehaviour:
   requiredItem: Corkscrew
   audioSource: {fileID: 5638865032653691949}
   deniedAudioSource: {fileID: 0}
+  actionName: 
 --- !u!82 &5638865032653691949
 AudioSource:
   m_ObjectHideFlags: 0

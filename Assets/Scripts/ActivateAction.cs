@@ -9,17 +9,23 @@ public class ActivateAction : ClickAction
     public string requiredItem = "";
     public AudioSource audioSource;
     public AudioSource deniedAudioSource;
+    bool expired = false;
+    public string actionName;
 
     // Start is called before the first frame update
     void Start()
     {
         tag = "Clickable";
     }
+    public override string getActionName()
+    {
+        return "interact";
+    }
 
     public override bool canUse()
     {
         if (requiredItem != "" && !player.hasItem(requiredItem)) return false;
-        return !target.activeInHierarchy;
+        return !expired && !target.activeInHierarchy;
     }
 
     public override void OnUsed()
@@ -36,5 +42,6 @@ public class ActivateAction : ClickAction
             audioSource.Play();
         }
         target.SetActive(true);
+        expired = true;
     }
 }

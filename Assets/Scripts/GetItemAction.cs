@@ -14,6 +14,10 @@ public class GetItemAction : ClickAction
     {
         tag = "Clickable";
     }
+    public override string getActionName()
+    {
+        return "pick up";
+    }
 
     public override bool canUse()
     {

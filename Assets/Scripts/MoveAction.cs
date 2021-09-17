@@ -8,11 +8,10 @@ public class MoveAction : ClickAction
     public Transform targetTransform;
     public Vector3 targetPos;
     public float speed = 1.0f;
-
     public AudioSource audioSource;
     public AudioSource deniedAudioSource;
-
     public Player player;
+    public string objectName;
 
     public string requiredItem = "";
 
@@ -23,11 +22,16 @@ public class MoveAction : ClickAction
     bool moving = false;
 
     Vector3 initialPos;
+    
 
     private void Start() {
         tag = "Clickable";
         initialPos = targetTransform.localPosition;
         if (deniedAudioSource != null) deniedAudioSource.priority = 0;
+    }
+    public override string getActionName()
+    {
+        return "interact";
     }
 
     bool lacksRequiredItem() {
@@ -37,15 +41,16 @@ public class MoveAction : ClickAction
     public override bool canUse()
     {
         if (moving) return false;
-        if (lacksRequiredItem()) return false;
+        // if (lacksRequiredItem()) return false;
         return isToggle ? true : !activated;
     }
 
     // Start is called before the first frame update
     public override void OnUsed()
     {
-        if (!canUse()) {
-            if (lacksRequiredItem() && deniedAudioSource != null) deniedAudioSource.Play();
+        if (!canUse()) return;
+        if (lacksRequiredItem()) {
+            if (deniedAudioSource != null) deniedAudioSource.Play();
             return;
         }
         if (moving || (activated && !isToggle)) {
