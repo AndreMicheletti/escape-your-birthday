@@ -15,7 +15,7 @@ public class LightSwitch : MonoBehaviour, IInteractible
       return true;
     }
 
-    public void OnInteract () {
+    public void OnInteract (Player _player) {
       active = !active;
       transform.localScale.Set(1, active ? 1.3f : -1.3f, 1);
       lights.SetActive(active);
@@ -24,5 +24,8 @@ public class LightSwitch : MonoBehaviour, IInteractible
 
     public string GetActionText() {
       return "turn " + (active ? "off" : "on");
+    }
+    public string GetDialogText() {
+      return "";
     }
 }

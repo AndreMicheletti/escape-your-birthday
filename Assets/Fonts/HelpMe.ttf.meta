@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e198eb98460ef834e8dc5bd50621f0ee
+guid: fcbe1b54fbfa4604d999de473ed2904e
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - THE NIGHT LAMP
+  - Help Me
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -1,12 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public static Player _instance = null;
     public float interactDistance = 1f;
-    public Text helperText;
     public Image filmGrain;
     public float maxTimeInDark = 10f;
 
@@ -16,9 +18,14 @@ public class Player : MonoBehaviour
     public GameObject roomLights = null;
     private IInteractible interactObject = null;
     private Coroutine onDark = null;
+    private List<GameItem> items = new List<GameItem>();
 
     private void Awake() {
-      if (helperText != null) helperText.text = "";
+      if (Player._instance != null) {
+        Destroy(gameObject);
+        return;
+      }
+      Player._instance = this;
     }
 
     // Update is called once per frame
@@ -36,8 +43,6 @@ public class Player : MonoBehaviour
     }
 
     private void FixedUpdate() {
-      helperText.text = (canInteract() ? "Click to " + interactObject.GetActionText() : "");
-
       if (onDark == null && !roomLights.activeInHierarchy) {
         StartOnDark();
       } else if (onDark != null && roomLights.activeInHierarchy) {
@@ -78,8 +83,29 @@ public class Player : MonoBehaviour
     }
 
     public void OnInteract (InputAction.CallbackContext context) {
-      if (canInteract() && context.performed) {
-        interactObject.OnInteract();
+      if (interactObject != null && context.performed) {
+        interactObject.OnInteract(this);
       }
+    }
+
+    /** ITEMS */
+    public bool HasItem(GameItem item) {
+      return items.Contains(item);
+    }
+
+    public void AddItem(GameItem item) {
+      if (HasItem(item)) return;
+      items.Add(item);
+      EventManager.ItemsChanged(items);
+    }
+
+    public void RemoveItem(GameItem item) {
+      if (!HasItem(item)) return;
+      items.Remove(item);
+      EventManager.ItemsChanged(items);
+    }
+
+    public IInteractible GetInteractObject () {
+      return interactObject;
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b542f4e53c8d63e45bd9eb12035879f9
+guid: 94a6660737149354d8641b98f2ddacf5
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Zombie Message
+  - Remnant
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
