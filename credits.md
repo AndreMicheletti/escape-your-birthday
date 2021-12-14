@@ -17,3 +17,4 @@
 
 - [Remnant](https://www.dafont.com/pt/remnant.font?l[]=10&l[]=1): GGBot https://www.ggbot.net/fonts/
 - [Help me](https://www.dafont.com/pt/help-me.font?l[]=10&l[]=1)
+- [X Typewriter](https://www.dafont.com/pt/x-typewriter.font): GGBot https://www.ggbot.net/fonts/
