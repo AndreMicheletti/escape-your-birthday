@@ -22,7 +22,7 @@ public class ShowDialogInteract : MonoBehaviour, IInteractible
     currentIndex += 1;
     if (currentIndex >= dialogText.Count) {
       if (loop) currentIndex = 0;
-      else currentIndex = dialogText.Count;
+      else currentIndex = dialogText.Count-1;
       if (oneShot) transform.position = new Vector3(0, 1000, 0);
     }
   }
