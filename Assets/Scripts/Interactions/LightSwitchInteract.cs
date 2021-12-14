@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LightSwitch : MonoBehaviour, IInteractible
+public class LightSwitchInteract : MonoBehaviour, IInteractible
 {
     public GameObject lights = null;
     public AudioSource audioSource = null;

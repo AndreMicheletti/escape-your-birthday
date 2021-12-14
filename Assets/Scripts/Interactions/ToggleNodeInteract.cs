@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DisableInteract : MonoBehaviour, IInteractible
+public class ToggleNodeInteract : MonoBehaviour, IInteractible
 {
 
   public GameItem requiredItem = null;
@@ -11,6 +11,7 @@ public class DisableInteract : MonoBehaviour, IInteractible
   public AudioSource audioSource = null;
 
   public bool CanInteract () {
+    if (requiredItem == null) return true;
     return Player._instance.HasItem(requiredItem);
   }
 

@@ -1,0 +1,30 @@
+using UnityEngine;
+
+public class CollectItemInteract : MonoBehaviour, IInteractible {
+
+  public GameItem item = null;
+  public AudioSource audioSource = null;
+  public string alreadyCollectedText = "";
+  public string customInteractText = "";
+  public bool removeOnCollect = true;
+  private bool collected = false;
+
+  public bool CanInteract () {
+    return item != null;
+  }
+
+  public void OnInteract (Player player) {
+    if (!removeOnCollect && collected) DialogManager.ShowCustomText(alreadyCollectedText, 2f);
+    if (!CanInteract()) return;
+    player.AddItem(item);
+    if (audioSource) audioSource.Play();
+    if (removeOnCollect) transform.position = new Vector3(0, -100, 0);
+    collected = true;
+  }
+
+  public string GetActionText() {
+    if (collected) return "";
+    if (customInteractText != "") return customInteractText;
+    return "pick up " + item.itemName;
+  }
+}

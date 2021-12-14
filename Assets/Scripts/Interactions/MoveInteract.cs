@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoveInteraction : MonoBehaviour, IInteractible
+public class MoveInteract : MonoBehaviour, IInteractible
 {
 
   public GameItem requiredItem = null;
@@ -49,15 +49,17 @@ public class MoveInteraction : MonoBehaviour, IInteractible
 
       // Move Rotation
       if (moveRotation) {
-        Vector3 fromRot = targetTransform.localEulerAngles;
+        Quaternion fromQuat = targetTransform.localRotation;
         Vector3 toRot = moved ? initialRot : targetRot;
-        targetTransform.localEulerAngles = Vector3.Lerp(fromRot, toRot, Time.deltaTime * movementSpeed);
-        rotArrived = Vector3.Distance(fromRot, toRot) < 0.02f;
+        Quaternion toQuat = Quaternion.Euler(toRot);
+        targetTransform.localRotation = Quaternion.RotateTowards(fromQuat, toQuat, Time.deltaTime * movementSpeed);
+        rotArrived = targetTransform.localRotation == toQuat;
       }
 
       if (posArrived && rotArrived) {
         moving = false;
         moved = !moved;
+        Debug.Log(name + " finished moving");
       }
     }
   }
@@ -68,6 +70,7 @@ public class MoveInteraction : MonoBehaviour, IInteractible
 
   public string GetActionText() {
     if (requiredItem != null && !Player._instance.HasItem(requiredItem)) return "investigate";
+    if (!bidirectional && moved) return "";
     return moving ? "" : (moved ? "close" : "open");
   }
 

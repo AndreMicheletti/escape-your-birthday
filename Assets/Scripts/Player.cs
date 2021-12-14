@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public static Player _instance = null;
+    public FirstPersonAIO firstPerson = null;
     public float interactDistance = 1f;
     public Image filmGrain;
     public float maxTimeInDark = 10f;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
         return;
       }
       Player._instance = this;
+      firstPerson.lockAndHideCursor = true;
     }
 
     // Update is called once per frame
@@ -107,5 +109,9 @@ public class Player : MonoBehaviour
 
     public IInteractible GetInteractObject () {
       return interactObject;
+    }
+
+    public void ClearInteractObject () {
+      interactObject = null;
     }
 }
