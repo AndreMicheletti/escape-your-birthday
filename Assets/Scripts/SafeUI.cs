@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,34 +26,43 @@ public class SafeUI : MonoBehaviour {
       audioSource.playOnAwake = false;
       audioSource.loop = false;
     }
-    Hide();
+    enterButton.onClick.AddListener(OnEnter);
+    backspaceButton.onClick.AddListener(OnBackspace);
+  }
+
+  private void FixedUpdate() {
+    visorText.text = currentText;
   }
 
   public void Show () {
     gameObject.SetActive(true);
-    currentText = "";
+    Player._instance.HideCursor();
   }
 
   public void Hide () {
     gameObject.SetActive(false);
+    Player._instance.ShowCursor();
+    Cursor.lockState = CursorLockMode.Locked;
+    Cursor.visible = false;
   }
 
   // Buttons
   public void OnInputNumber (string number) {
     if (currentText.Length >= 6) return;
-    currentText += number;
+    currentText += number.ToString();
   }
 
   public void OnBackspace () {
     if (currentText.Length < 1) return;
     if (currentText.Length == 1) currentText = "";
-    else currentText.Remove(currentText.Length - 2);
+    else currentText = currentText.Remove(currentText.Length - 1);
   }
 
   public void OnEnter () {
     if (currentText == secret) {
 
     }
+    EventManager.ToogleSafeUI(false);
   }
 
   // Sound

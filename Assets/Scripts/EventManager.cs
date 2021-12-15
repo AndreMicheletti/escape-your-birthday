@@ -8,8 +8,14 @@ public class EventManager : MonoBehaviour {
   public delegate void ItemsChangedAction(List<GameItem> items);
   public static event ItemsChangedAction OnItemsChanged;
 
+  public delegate void ToogleSafeUIAction(bool to);
+  public static event ToogleSafeUIAction OnToogleSafeUI;
+
   public static void ItemsChanged (List<GameItem> items) {
     if (OnItemsChanged != null) OnItemsChanged(items);
+  }
+  public static void ToogleSafeUI (bool to) {
+    if (OnToogleSafeUI != null) OnToogleSafeUI(to);
   }
 
   private void Awake() {

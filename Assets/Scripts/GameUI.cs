@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
+
+  public SafeUI safeUI = null;
   public GameObject itemsParent = null;
 
   int GetItemID (GameItem item) {
@@ -19,11 +21,23 @@ public class GameUI : MonoBehaviour
     }
   }
 
+  private void OnToogleSafeUI(bool to) {
+    if (to == true) {
+      DialogManager._instance.interactText.gameObject.SetActive(false);
+      safeUI.Show();
+    } else {
+      DialogManager._instance.interactText.gameObject.SetActive(true);
+      safeUI.Hide();
+    }
+  }
+
   private void OnEnable() {
     EventManager.OnItemsChanged += OnItemsChanged;
+    EventManager.OnToogleSafeUI += OnToogleSafeUI;
   }
 
   private void OnDisable() {
     EventManager.OnItemsChanged -= OnItemsChanged;
+    EventManager.OnToogleSafeUI -= OnToogleSafeUI;
   }
 }

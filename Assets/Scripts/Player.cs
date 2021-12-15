@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
     }
 
     public void OnInteract (InputAction.CallbackContext context) {
+      if (firstPerson.controllerPauseState) return;
       if (interactObject != null && context.performed) {
         interactObject.OnInteract(this);
       }
@@ -113,5 +114,18 @@ public class Player : MonoBehaviour
 
     public void ClearInteractObject () {
       interactObject = null;
+    }
+
+    /** Cursor */
+    public void ShowCursor () {
+      if (firstPerson.controllerPauseState) firstPerson.ControllerPause();
+      Cursor.lockState = CursorLockMode.None;
+      Cursor.visible = true;
+    }
+
+    public void HideCursor () {
+      if (!firstPerson.controllerPauseState) firstPerson.ControllerPause();
+      Cursor.lockState = CursorLockMode.None;
+      Cursor.visible = true;
     }
 }

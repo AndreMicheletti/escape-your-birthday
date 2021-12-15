@@ -12,6 +12,9 @@ public class MoveInteract : MonoBehaviour, IInteractible
   public bool bidirectional = false;
   public float movementSpeed = 1.5f;
   public string dialogText = "";
+  public string openText = "open";
+  public string closeText = "close";
+  public string investigateText = "investigate";
   public AudioSource audioSource = null;
   private Vector3 initialPos = new Vector3();
   private Vector3 initialRot = new Vector3();
@@ -69,9 +72,9 @@ public class MoveInteract : MonoBehaviour, IInteractible
   }
 
   public string GetActionText() {
-    if (requiredItem != null && !Player._instance.HasItem(requiredItem)) return "investigate";
+    if (requiredItem != null && !Player._instance.HasItem(requiredItem)) return investigateText;
     if (!bidirectional && moved) return "";
-    return moving ? "" : (moved ? "close" : "open");
+    return moving ? "" : (moved ? closeText : openText);
   }
 
   public string GetDialogText() {
