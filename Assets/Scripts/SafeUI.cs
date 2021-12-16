@@ -13,12 +13,11 @@ public class SafeUI : MonoBehaviour {
   public AudioClip removeSound = null;
   public AudioClip errorSound = null;
   public AudioClip successSound = null;
-  private AudioSource audioSource = null;
+  public AudioSource audioSource = null;
 
   private string currentText = "";
 
   private void Awake () {
-    audioSource = GetComponent<AudioSource>();
     if (audioSource != null) {
       audioSource.volume = 0.7f;
       audioSource.playOnAwake = false;

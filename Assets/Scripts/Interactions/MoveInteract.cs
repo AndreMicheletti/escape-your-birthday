@@ -24,6 +24,10 @@ public class MoveInteract : MonoBehaviour, IInteractible
   private void Awake() {
     initialPos = targetTransform.localPosition;
     initialRot = targetTransform.localEulerAngles;
+    if (audioSource) {
+      audioSource.volume = 0.7f;
+      audioSource.spatialBlend = 1f;
+    }
   }
 
   public void OnInteract(Player player) {
