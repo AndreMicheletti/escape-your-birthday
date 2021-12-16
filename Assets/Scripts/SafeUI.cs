@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SafeUI : MonoBehaviour {
   
+  public SafeInteract safeInteract = null;
   public Text visorText = null;
   public Button enterButton = null;
   public Button backspaceButton = null;
@@ -49,6 +47,7 @@ public class SafeUI : MonoBehaviour {
   // Buttons
   public void OnInputNumber (string number) {
     if (currentText.Length >= 6) return;
+    PlaySound(inputSound);
     currentText += number.ToString();
   }
 
@@ -56,11 +55,15 @@ public class SafeUI : MonoBehaviour {
     if (currentText.Length < 1) return;
     if (currentText.Length == 1) currentText = "";
     else currentText = currentText.Remove(currentText.Length - 1);
+    PlaySound(removeSound);
   }
 
   public void OnEnter () {
     if (currentText == secret) {
-
+      PlaySound(successSound);
+      safeInteract.OpenSafe();
+    } else {
+      PlaySound(errorSound);
     }
     EventManager.ToogleSafeUI(false);
   }
