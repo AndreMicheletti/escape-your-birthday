@@ -38,9 +38,8 @@ public class Player : MonoBehaviour
       RaycastHit hit;
       if (Physics.Raycast(transform.position, transform.forward, out hit, interactDistance)) {
         IInteractible interact = hit.collider.gameObject.GetComponent<IInteractible>();
-        if (interact != null) {
-          interactObject = interact;
-        }
+        if (interact != null) interactObject = interact;
+        else interactObject = null;
       } else if (interactObject != null) interactObject = null;
     }
 

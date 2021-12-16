@@ -3,7 +3,9 @@ using UnityEngine;
 public class CollectItemInteract : MonoBehaviour, IInteractible {
 
   public GameItem item = null;
+  public GameItem requiredItem = null;
   public AudioSource audioSource = null;
+  public string missingRequiredText = null;
   public string alreadyCollectedText = "";
   public string customInteractText = "";
   public bool removeOnCollect = true;
@@ -14,7 +16,14 @@ public class CollectItemInteract : MonoBehaviour, IInteractible {
   }
 
   public void OnInteract (Player player) {
-    if (!removeOnCollect && collected) DialogManager.ShowCustomText(alreadyCollectedText, 2f);
+    if (!removeOnCollect && collected) {
+      DialogManager.ShowCustomText(alreadyCollectedText, 2f);
+      return;
+    }
+    if (requiredItem != null && !player.HasItem(requiredItem)) {
+      DialogManager.ShowCustomText(missingRequiredText, 2f);
+      return;
+    }
     if (!CanInteract()) return;
     player.AddItem(item);
     if (audioSource) audioSource.Play();
