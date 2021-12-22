@@ -5,6 +5,7 @@ public class CollectItemInteract : MonoBehaviour, IInteractible {
   public GameItem item = null;
   public GameItem requiredItem = null;
   public AudioSource audioSource = null;
+  public AudioSource[] additionalAudio = {};
   public string missingRequiredText = null;
   public string alreadyCollectedText = "";
   public string customInteractText = "";
@@ -27,6 +28,8 @@ public class CollectItemInteract : MonoBehaviour, IInteractible {
     if (!CanInteract()) return;
     player.AddItem(item);
     if (audioSource) audioSource.Play();
+    if (additionalAudio != null && additionalAudio.Length > 0)
+      foreach (var audio in additionalAudio) audio.Play();
     if (removeOnCollect) transform.position = new Vector3(0, -100, 0);
     collected = true;
   }

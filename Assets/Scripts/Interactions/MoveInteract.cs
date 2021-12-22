@@ -16,6 +16,8 @@ public class MoveInteract : MonoBehaviour, IInteractible
   public string closeText = "close";
   public string investigateText = "investigate";
   public AudioSource audioSource = null;
+  public AudioSource oneTimeAudio = null;
+
   private Vector3 initialPos = new Vector3();
   private Vector3 initialRot = new Vector3();
   private bool moved = false;
@@ -38,7 +40,11 @@ public class MoveInteract : MonoBehaviour, IInteractible
       return;
     }
     moving = true;
-    if (audioSource) audioSource.Play();
+    if (audioSource != null) audioSource.Play();
+    if (oneTimeAudio != null) {
+      oneTimeAudio.Play();
+      oneTimeAudio = null;
+    }
   }
 
   private void Update() {
