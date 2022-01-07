@@ -10,6 +10,7 @@ public class LightSwitchInteract : MonoBehaviour, IInteractible
 
     private void Awake() {
       this.currentScaleY = this.transform.localScale.y;
+      active = lights.activeSelf;
     }
 
     public bool CanInteract () {
@@ -22,6 +23,10 @@ public class LightSwitchInteract : MonoBehaviour, IInteractible
       lights.SetActive(active);
       wallWritings.SetActive(!active);
       audioSource.Play();
+      if (!GameStateManager._instance.gameOverAllowed) {
+        GameStateManager._instance.gameOverAllowed = true;
+        _player.Resume();
+      }
     }
 
     public string GetActionText() {

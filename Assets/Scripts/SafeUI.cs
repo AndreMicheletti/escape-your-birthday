@@ -33,12 +33,14 @@ public class SafeUI : MonoBehaviour {
 
   public void Show () {
     gameObject.SetActive(true);
-    Player._instance.HideCursor();
+    Player._instance.Pause();
+    Player._instance.ShowCursor();
   }
 
   public void Hide () {
     gameObject.SetActive(false);
-    Player._instance.ShowCursor();
+    Player._instance.Resume();
+    Player._instance.HideCursor();
     Cursor.lockState = CursorLockMode.Locked;
     Cursor.visible = false;
   }

@@ -28,12 +28,17 @@ public class Player : MonoBehaviour
       }
       Player._instance = this;
       firstPerson.lockAndHideCursor = true;
+      firstPerson.ControllerPause();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
       Debug.DrawRay(transform.position, transform.forward * interactDistance, Color.red);
+
+      if (GameStateManager.IsPaused()) {
+        interactObject = null;
+        return;
+      }
 
       RaycastHit hit;
       if (Physics.Raycast(transform.position, transform.forward, out hit, interactDistance)) {
@@ -44,6 +49,8 @@ public class Player : MonoBehaviour
     }
 
     private void FixedUpdate() {
+      if (GameStateManager.IsPaused()) return;
+      if (!GameStateManager._instance.gameOverAllowed) return;
       if (onDark == null && !roomLights.activeInHierarchy) {
         StartOnDark();
       } else if (onDark != null && roomLights.activeInHierarchy) {
@@ -52,6 +59,8 @@ public class Player : MonoBehaviour
     }
 
     public void StartOnDark () {
+      if (GameStateManager.IsPaused()) return;
+      if (!GameStateManager._instance.gameOverAllowed) return;
       onDark = StartCoroutine(OnDarkCoroutine());
       darkSoundClip.volume = 0f;
       darkSoundClip.Play();
@@ -77,6 +86,9 @@ public class Player : MonoBehaviour
         filmGrain.color = new Color(1, 1, 1, 0.27f * ease);
         darkSoundClip.volume = ease;
       }
+      // Reached game over
+      filmGrain.color = new Color(1, 1, 1, 1);
+      GameStateManager.GameOver();
     }
 
     private bool canInteract () {
@@ -84,7 +96,7 @@ public class Player : MonoBehaviour
     }
 
     public void OnInteract (InputAction.CallbackContext context) {
-      if (firstPerson.controllerPauseState) return;
+      if (GameStateManager.IsPaused()) return;
       if (interactObject != null && context.performed) {
         interactObject.OnInteract(this);
       }
@@ -115,16 +127,22 @@ public class Player : MonoBehaviour
       interactObject = null;
     }
 
+    public void Pause() {
+      if (!firstPerson.controllerPauseState) firstPerson.ControllerPause();
+    }
+
+    public void Resume() {
+      if (firstPerson.controllerPauseState) firstPerson.ControllerPause();
+    }
+
     /** Cursor */
     public void ShowCursor () {
-      if (firstPerson.controllerPauseState) firstPerson.ControllerPause();
       Cursor.lockState = CursorLockMode.None;
       Cursor.visible = true;
     }
 
     public void HideCursor () {
-      if (!firstPerson.controllerPauseState) firstPerson.ControllerPause();
-      Cursor.lockState = CursorLockMode.None;
-      Cursor.visible = true;
+      Cursor.lockState = CursorLockMode.Locked;
+      Cursor.visible = false;
     }
 }
