@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
         float pointInCurve = i / maxTime;
         float ease = darkenCurve.Evaluate(pointInCurve);
         filmGrain.color = new Color(1, 1, 1, 0.27f * ease);
-        darkSoundClip.volume = ease;
+        darkSoundClip.volume = 0.75f * ease;
       }
       // Reached game over
       filmGrain.color = new Color(1, 1, 1, 1);

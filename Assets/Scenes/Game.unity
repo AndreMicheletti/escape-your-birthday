@@ -17737,9 +17737,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 59098493b8cb569498905d9be2c14062, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8c95bebd084980a4dac04173ce077063, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -18121,8 +18121,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.41300535, y: 4.486783, z: 7.3455114}
-  m_Center: {x: -0.21031189, y: -0.04695177, z: 0.04150343}
+  m_Size: {x: 0.2873752, y: 4.486783, z: 7.3455114}
+  m_Center: {x: -0.27312696, y: -0.04695177, z: 0.04150343}
 --- !u!114 &571992508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27195,7 +27195,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -29588,6 +29588,7 @@ MonoBehaviour:
   - {fileID: 491620438}
   - {fileID: 1718874356}
   - {fileID: 2051528431}
+  doodleIntensity: 0.09
 --- !u!82 &1297302183
 AudioSource:
   m_ObjectHideFlags: 0
@@ -29695,8 +29696,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.994423, y: 3.2, z: 2.2821786}
-  m_Center: {x: -0.29401475, y: 0, z: -0.8666246}
+  m_Size: {x: 9.506862, y: 3.2, z: 1.2337888}
+  m_Center: {x: -0.21848282, y: 0, z: -0.34243006}
 --- !u!82 &1297302185
 AudioSource:
   m_ObjectHideFlags: 0
@@ -48195,7 +48196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb4353d76612c04392474e4242d84c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredItem: {fileID: 11400000, guid: 708c915a819a57d42be8389dd434b240, type: 2}
+  requiredItem: {fileID: 11400000, guid: a98a770c8a90a9641a2a8440132ec454, type: 2}
   targets: []
   canInteractText: open
   cannotInteractText: investigate

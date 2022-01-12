@@ -48,7 +48,7 @@ public class RandomEvents : MonoBehaviour
       yield return new WaitForSeconds(Random.Range(9f, 32f));
       int selected = lastEvent;
       do {
-        selected = rand.Next(10);
+        selected = rand.Next(11);
       } while (lastEvent == selected);
       lastEvent = selected;
       switch (selected) {
@@ -112,9 +112,15 @@ public class RandomEvents : MonoBehaviour
           eyesNode.SetActive(false);
           ghost.SpawnGhost();
           this.StopEvents();
-          yield return new WaitForSeconds(Random.Range(8f, 10f));
           break;
         case 10:
+          Debug.Log("EVENT [Ghost with Light]");
+          if (lightSwitch.IsActive()) lightSwitch.OnInteract(null);
+          eyesNode.SetActive(false);
+          ghost.SpawnGhost();
+          this.StopEvents();
+          break;
+        case 11:
           Debug.Log("EVENT [Light Switch with Eye]");
           if (lightSwitch.IsActive()) lightSwitch.OnInteract(null);
           eyePeekHole.OnInteract(null);

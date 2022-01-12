@@ -6,10 +6,13 @@ public class Ghost : MonoBehaviour
   public AudioSource spottedAudio = null;
   public AudioSource breathAudio = null;
   public Transform[] spawnPositions = null;
+  public float doodleIntensity = 0.05f;
   private System.Random rnd = new System.Random();
   private SpriteRenderer spriteRenderer = null;
   private new Camera camera = null;
   private bool found = false;
+  private Vector3 originalPos = new Vector3();
+  private Coroutine fading = null;
 
   private void Awake() {
     spriteRenderer = GetComponent<SpriteRenderer>();
@@ -18,15 +21,35 @@ public class Ghost : MonoBehaviour
   }
 
   public void SpawnGhost () {
-    transform.position = spawnPositions[rnd.Next(spawnPositions.Length)].position;
+    Transform selected = spawnPositions[rnd.Next(spawnPositions.Length)];
+    originalPos = selected.position;
+    transform.position = selected.position;
     spriteRenderer.enabled = true;
+    fading = StartCoroutine(FadeIn());
     breathAudio.Play();
     found = false;
   }
 
+  private IEnumerator FadeIn () {
+    float factor = 100f;
+    float totalTime = 0.3f;
+    float step = totalTime / factor;
+    spriteRenderer.color = new Color(1, 1, 1, 0);
+    for (float i = 0f; i < factor; i += 1) {
+      yield return new WaitForSeconds(step);
+      Color newColor = new Color(1, 1, 1, (i / factor) * 0.75f);
+      spriteRenderer.color = newColor;
+    }
+    fading = null;
+  }
+
   private void Update() {
-    if (spriteRenderer.enabled && !found)
+    if (spriteRenderer.enabled && !found) {
       CheckVisibility();
+      float offsetX = Random.Range(-doodleIntensity, doodleIntensity);
+      float offsetY = Random.Range(-doodleIntensity, doodleIntensity);
+      transform.position = new Vector3(originalPos.x + offsetX, originalPos.y + offsetY, originalPos.z);
+    }
   }
 
   public void CheckVisibility() {
@@ -47,6 +70,8 @@ public class Ghost : MonoBehaviour
 
   private void OnFound() {
     if (found) return;
+    if (fading != null) StopCoroutine(fading);
+    fading = null;
     found = true;
     breathAudio.Stop();
     StartCoroutine(HideCoroutine());

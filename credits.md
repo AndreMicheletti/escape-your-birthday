@@ -3,22 +3,22 @@
 ## Tools
 
 - Unity 3D
-- Photoshop
 - AUTODESK Maya 3D
+- Adobe Photoshop
 - Adobe Substance Painter
 
 ## Sounds
 
 - [Dark Ambience](https://opengameart.org/content/dark-ambient-1): Vinrax http://vinraxarts.ru/
-- [Factory Ambience](https://opengameart.org/users/yd): Yd
 - [51 UI Sounds](https://opengameart.org/content/51-ui-sound-effects-buttons-switches-and-clicks): Kenney
+- [Dungeon Ambience](https://opengameart.org/content/dungeon-ambience): Yd
 
 - [Typewriter](https://opengameart.org/content/single-key-press-sounds): 
 > Copyright 2012 eklee http://freesound.org/people/eklee/ | Copyright 2012 qubodup http://freesound.org/people/qubodup/ extraction of single sounds | License: CC Attribution 3.0 http://creativecommons.org/licenses/by/3.0/
 
 - [Door set](https://opengameart.org/content/door-open-door-close-set): Iwan 'qubodup' Gabovitch <qubodup@gmail.com>
-- [Old man Cough]() Created by Jordan Irwin (AntumDeluge)
-- [Door knock](https://opengameart.org/content/12-3-knocks-wooden-doors) Iwan 'qubodup' Gabovitch <qubodup@gmail.com>
+- [Door knock](https://opengameart.org/content/12-3-knocks-wooden-doors): Iwan 'qubodup' Gabovitch <qubodup@gmail.com>
+- Old man Cough: Created by Jordan Irwin (AntumDeluge)
 
 ## Fonts
 
