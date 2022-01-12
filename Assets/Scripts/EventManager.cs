@@ -11,6 +11,8 @@ public class EventManager : MonoBehaviour {
   public delegate void ToogleSafeUIAction(bool to);
   public static event ToogleSafeUIAction OnToogleSafeUI;
 
+  public delegate void GhostSeenAction();
+  public static event GhostSeenAction OnSeenGhost;
 
   public static void ItemsChanged (List<GameItem> items) {
     if (OnItemsChanged != null) OnItemsChanged(items);
@@ -18,6 +20,10 @@ public class EventManager : MonoBehaviour {
 
   public static void ToogleSafeUI (bool to) {
     if (OnToogleSafeUI != null) OnToogleSafeUI(to);
+  }
+
+  public static void SeenGhost () {
+    if (OnSeenGhost != null) OnSeenGhost();
   }
 
   private void Awake() {

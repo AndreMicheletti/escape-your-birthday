@@ -17,6 +17,10 @@ public class LightSwitchInteract : MonoBehaviour, IInteractible
       return true;
     }
 
+    public bool IsActive () {
+      return this.active;
+    }
+
     public void OnInteract (Player _player) {
       active = !active;
       transform.localScale.Set(1, active ? 1.3f : -1.3f, 1);

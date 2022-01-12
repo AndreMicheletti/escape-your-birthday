@@ -4,9 +4,10 @@ public class SafeInteract : MonoBehaviour, IInteractible
 {
 
   public Transform safeDoor = null;
+  public GameObject roomLights = null;
 
   public bool CanInteract () {
-    return true;
+    return roomLights.activeInHierarchy == true;
   }
 
   public void OnInteract(Player player) { 

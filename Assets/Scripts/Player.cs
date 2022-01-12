@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
     public void StartOnDark () {
       if (GameStateManager.IsPaused()) return;
       if (!GameStateManager._instance.gameOverAllowed) return;
+      EventManager.ToogleSafeUI(false);
       onDark = StartCoroutine(OnDarkCoroutine());
       darkSoundClip.volume = 0f;
       darkSoundClip.Play();

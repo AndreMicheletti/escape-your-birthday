@@ -28,7 +28,11 @@ public class SafeUI : MonoBehaviour {
   }
 
   private void FixedUpdate() {
-    visorText.text = currentText;
+    string uiText = currentText;
+    while (uiText.Length < 6) {
+      uiText += "*";
+    }
+    visorText.text = uiText;
   }
 
   public void Show () {

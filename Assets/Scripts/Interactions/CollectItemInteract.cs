@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CollectItemInteract : MonoBehaviour, IInteractible {
 
@@ -11,6 +12,7 @@ public class CollectItemInteract : MonoBehaviour, IInteractible {
   public string customInteractText = "";
   public bool removeOnCollect = true;
   private bool collected = false;
+  public EventTrigger.TriggerEvent OnCollectItem;
 
   public bool CanInteract () {
     return item != null;
@@ -32,6 +34,7 @@ public class CollectItemInteract : MonoBehaviour, IInteractible {
       foreach (var audio in additionalAudio) audio.Play();
     if (removeOnCollect) transform.position = new Vector3(0, -100, 0);
     collected = true;
+    OnCollectItem.Invoke(null);
   }
 
   public string GetActionText() {

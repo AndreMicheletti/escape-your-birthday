@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MoveInteract : MonoBehaviour, IInteractible
 {
@@ -22,6 +23,7 @@ public class MoveInteract : MonoBehaviour, IInteractible
   private Vector3 initialRot = new Vector3();
   private bool moved = false;
   private bool moving = false;
+  public EventTrigger.TriggerEvent InteractCallback;
 
   private void Awake() {
     initialPos = targetTransform.localPosition;
@@ -40,6 +42,7 @@ public class MoveInteract : MonoBehaviour, IInteractible
       return;
     }
     moving = true;
+    InteractCallback.Invoke(null);
     if (audioSource != null) audioSource.Play();
     if (oneTimeAudio != null) {
       oneTimeAudio.Play();
