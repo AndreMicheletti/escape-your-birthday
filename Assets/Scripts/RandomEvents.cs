@@ -15,10 +15,12 @@ public class RandomEvents : MonoBehaviour
   public AudioSource breathingAudio = null;
   public AudioSource doorKnockAudio = null;
   public Ghost ghost = null;
+  public GameItem midgameItem = null;
   private Coroutine events = null;
   private int lastEvent = -1;
   private int ghostCount = 0;
   private System.Random rand = new System.Random();
+  private int[] ghostEvents = {9, 10, 12, 13, 14};
 
   private void OnEnable() {
     EventManager.OnSeenGhost += OnSeenGhost;
@@ -52,14 +54,20 @@ public class RandomEvents : MonoBehaviour
     this.StartEvents();
   }
 
+  private bool IsMidGame () {
+    if (!midgameItem) return false;
+    return Player._instance.HasItem(midgameItem);
+  }
+
   private IEnumerator ActivateEventsCoroutine() {
     yield return new WaitForSeconds(Random.Range(2f, 4f));
     while (true) {
-      yield return new WaitForSeconds(Random.Range(7f, 28f));
+      if (IsMidGame()) yield return new WaitForSeconds(Random.Range(6f, 12f));
+      else yield return new WaitForSeconds(Random.Range(7f, 22f));
       int selected = lastEvent;
       do {
         selected = rand.Next(14);
-        if (ghostCount >= 3) selected = 9;
+        if (ghostCount >= 2) selected = ghostEvents[rand.Next(ghostEvents.Length)];
       } while (lastEvent == selected);
       ghostCount += 1;
       lastEvent = selected;
@@ -67,12 +75,12 @@ public class RandomEvents : MonoBehaviour
         case 0:
           Debug.Log("EVENT [Chair Move]");
           chairMove.OnInteract(null);
-          yield return new WaitForSeconds(Random.Range(5f, 8f));
+          yield return new WaitForSeconds(Random.Range(2f, 4f));
           break;
         case 1:
           Debug.Log("EVENT [Cough]");
           oldManAudio.Play();
-          yield return new WaitForSeconds(Random.Range(3f, 5f));
+          yield return new WaitForSeconds(Random.Range(1f, 3f));
           break;
         case 2:
           Debug.Log("EVENT [Light Switch]");
@@ -146,7 +154,7 @@ public class RandomEvents : MonoBehaviour
           Debug.Log("EVENT [Ghost with Sink]");
           sink.OnInteract(null);
           eyesNode.SetActive(false);
-          ghost.SpawnGhost(2);
+          ghost.SpawnGhost(3);
           this.StopEvents();
           ghostCount = 0;
           break;

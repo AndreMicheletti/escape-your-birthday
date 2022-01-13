@@ -21,7 +21,10 @@ public class Ghost : MonoBehaviour
   }
 
   public void SpawnGhost () {
-    Transform selected = spawnPositions[rnd.Next(spawnPositions.Length)];
+    StartCoroutine(TentativeSpawn());
+  }
+  public void SpawnGhost (int index) {
+    Transform selected = spawnPositions[index];
     originalPos = selected.position;
     transform.position = selected.position;
     spriteRenderer.enabled = true;
@@ -29,11 +32,21 @@ public class Ghost : MonoBehaviour
     breathAudio.Play();
     found = false;
   }
-  public void SpawnGhost (int index) {
-    Transform selected = spawnPositions[index];
-    originalPos = selected.position;
-    transform.position = selected.position;
+
+  private IEnumerator TentativeSpawn() {
+    found = true;
     spriteRenderer.enabled = true;
+    spriteRenderer.color = new Color(1, 1, 1, 0);
+    bool onScreen = true;
+    do {
+      Debug.Log("Tentative spawn...");
+      Transform selected = spawnPositions[rnd.Next(spawnPositions.Length)];
+      originalPos = selected.position;
+      transform.position = selected.position;
+      Vector3 screenPos = camera.WorldToScreenPoint(transform.position);
+      onScreen = screenPos.x > 0f && screenPos.x < Screen.width && screenPos.y > 0f && screenPos.y < Screen.height;
+      yield return new WaitForSeconds(0.1f);
+    } while (onScreen == true);
     fading = StartCoroutine(FadeIn());
     breathAudio.Play();
     found = false;
@@ -54,14 +67,14 @@ public class Ghost : MonoBehaviour
 
   private void Update() {
     if (spriteRenderer.enabled && !found) {
-      CheckVisibility();
+      if (CheckVisibility()) OnFound();
       float offsetX = Random.Range(-doodleIntensity, doodleIntensity);
       float offsetY = Random.Range(-doodleIntensity, doodleIntensity);
       transform.position = new Vector3(originalPos.x + offsetX, originalPos.y + offsetY, originalPos.z);
     }
   }
 
-  public void CheckVisibility() {
+  public bool CheckVisibility() {
     Vector3 screenPos = camera.WorldToScreenPoint(transform.position);
     bool onScreen = screenPos.x > 0f && screenPos.x < Screen.width && screenPos.y > 0f && screenPos.y < Screen.height;
     bool raycasted = false;
@@ -71,10 +84,7 @@ public class Ghost : MonoBehaviour
       if (hit.collider.gameObject == gameObject) raycasted = true;
     }
 
-    if (onScreen && spriteRenderer.isVisible && raycasted) {
-      // Visible
-      OnFound();
-    }
+    return (onScreen && spriteRenderer.isVisible && raycasted);
   }
 
   public void OnFound(bool playAudio = true) {
