@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     public  AnimationCurve darkenCurve;
     public AudioSource darkSoundClip;
+    public GameObject gameOverUI = null;
 
     public GameObject roomLights = null;
     private IInteractible interactObject = null;
@@ -85,7 +86,7 @@ public class Player : MonoBehaviour
         float pointInCurve = i / maxTime;
         float ease = darkenCurve.Evaluate(pointInCurve);
         filmGrain.color = new Color(1, 1, 1, 0.27f * ease);
-        darkSoundClip.volume = 0.75f * ease;
+        darkSoundClip.volume = 0.6f * ease;
       }
       // Reached game over
       filmGrain.color = new Color(1, 1, 1, 1);

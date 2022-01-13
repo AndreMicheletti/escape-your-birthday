@@ -29,6 +29,15 @@ public class Ghost : MonoBehaviour
     breathAudio.Play();
     found = false;
   }
+  public void SpawnGhost (int index) {
+    Transform selected = spawnPositions[index];
+    originalPos = selected.position;
+    transform.position = selected.position;
+    spriteRenderer.enabled = true;
+    fading = StartCoroutine(FadeIn());
+    breathAudio.Play();
+    found = false;
+  }
 
   private IEnumerator FadeIn () {
     float factor = 100f;
@@ -68,19 +77,19 @@ public class Ghost : MonoBehaviour
     }
   }
 
-  private void OnFound() {
+  public void OnFound(bool playAudio = true) {
     if (found) return;
     if (fading != null) StopCoroutine(fading);
+    if (spottedAudio && playAudio) spottedAudio.Play();
     fading = null;
     found = true;
     breathAudio.Stop();
+    EventManager.SeenGhost();
     StartCoroutine(HideCoroutine());
   }
 
   private IEnumerator HideCoroutine () {
-    if (spottedAudio) spottedAudio.Play();
     yield return new WaitForSeconds(0.5f);
-    EventManager.SeenGhost();
     spriteRenderer.enabled = false;
     transform.position = new Vector3(0, 0, 0);
     found = false;

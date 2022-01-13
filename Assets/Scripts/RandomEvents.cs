@@ -17,7 +17,25 @@ public class RandomEvents : MonoBehaviour
   public Ghost ghost = null;
   private Coroutine events = null;
   private int lastEvent = -1;
+  private int ghostCount = 0;
   private System.Random rand = new System.Random();
+
+  private void OnEnable() {
+    EventManager.OnSeenGhost += OnSeenGhost;
+    EventManager.OnReceivedFinalItem += OnReceivedFinalItem;
+  }
+
+  private void OnDisable() {
+    EventManager.OnSeenGhost -= OnSeenGhost;
+    EventManager.OnReceivedFinalItem -= OnReceivedFinalItem;
+  }
+
+  private void OnReceivedFinalItem () {
+    ghost.OnFound(false);
+    eyesNode.SetActive(false);
+    StopEvents();
+    gameObject.SetActive(false);
+  }
 
   public void StartEvents() {
     if (this.events != null) return;
@@ -29,27 +47,21 @@ public class RandomEvents : MonoBehaviour
     this.events = null;
   }
 
-  private void OnEnable() {
-    EventManager.OnSeenGhost += OnSeenGhost;
-  }
-
-  private void OnDisable() {
-    EventManager.OnSeenGhost -= OnSeenGhost;
-  }
-
   private void OnSeenGhost () {
     eyesNode.SetActive(true);
     this.StartEvents();
   }
 
   private IEnumerator ActivateEventsCoroutine() {
-    yield return new WaitForSeconds(Random.Range(8f, 12f));
+    yield return new WaitForSeconds(Random.Range(2f, 4f));
     while (true) {
-      yield return new WaitForSeconds(Random.Range(9f, 32f));
+      yield return new WaitForSeconds(Random.Range(7f, 28f));
       int selected = lastEvent;
       do {
-        selected = rand.Next(11);
+        selected = rand.Next(14);
+        if (ghostCount >= 3) selected = 9;
       } while (lastEvent == selected);
+      ghostCount += 1;
       lastEvent = selected;
       switch (selected) {
         case 0:
@@ -112,6 +124,7 @@ public class RandomEvents : MonoBehaviour
           eyesNode.SetActive(false);
           ghost.SpawnGhost();
           this.StopEvents();
+          ghostCount = 0;
           break;
         case 10:
           Debug.Log("EVENT [Ghost with Light]");
@@ -119,6 +132,7 @@ public class RandomEvents : MonoBehaviour
           eyesNode.SetActive(false);
           ghost.SpawnGhost();
           this.StopEvents();
+          ghostCount = 0;
           break;
         case 11:
           Debug.Log("EVENT [Light Switch with Eye]");
@@ -127,6 +141,29 @@ public class RandomEvents : MonoBehaviour
           breathingAudio.Play();
           yield return new WaitForSeconds(Random.Range(7f, 9f));
           eyePeekHole.OnInteract(null);
+          break;
+        case 12:
+          Debug.Log("EVENT [Ghost with Sink]");
+          sink.OnInteract(null);
+          eyesNode.SetActive(false);
+          ghost.SpawnGhost(2);
+          this.StopEvents();
+          ghostCount = 0;
+          break;
+        case 13:
+          Debug.Log("EVENT [Ghost]");
+          eyesNode.SetActive(false);
+          ghost.SpawnGhost();
+          this.StopEvents();
+          ghostCount = 0;
+          break;
+        case 14:
+          Debug.Log("EVENT [Ghost with Light]");
+          if (lightSwitch.IsActive()) lightSwitch.OnInteract(null);
+          eyesNode.SetActive(false);
+          ghost.SpawnGhost();
+          this.StopEvents();
+          ghostCount = 0;
           break;
       }
     }

@@ -11,10 +11,12 @@ public class GameStateManager : MonoBehaviour
 
   [HideInInspector]
   public bool paused = false;
+
+  [HideInInspector]
   public bool gameOverAllowed = false;
   private int gameOverCount = 0;
 
-  private void Awake() {      
+  private void Awake() {
     if (_instance != null) {
       Destroy(gameObject);
       return;
@@ -45,6 +47,12 @@ public class GameStateManager : MonoBehaviour
     _instance.StartCoroutine(_instance.SceneIntro());
   }
 
+  public static void LoadGameOver() {
+    Player._instance.ShowCursor();
+    SceneManager.LoadScene("TitleScreen", LoadSceneMode.Single);
+    if (_instance) Destroy(_instance);
+  }
+
   public static void GameOver() {
     Player._instance.Pause();
     Player._instance.HideCursor();
@@ -54,7 +62,8 @@ public class GameStateManager : MonoBehaviour
 
   public static IEnumerator GameOverTimer() {
     yield return new WaitForSeconds(_instance.gameOverWaitTime);
-    ResetScene();
+    Player._instance.gameOverUI.SetActive(true);
+    Player._instance.ShowCursor();
   }
 
   public static void Pause () {

@@ -6,7 +6,7 @@ public class DialogManager : MonoBehaviour
 {
   public static DialogManager _instance = null;
   public GameObject dialogParent = null;
-  public Text dialogText = null;
+  public TypewriterText dialogText = null;
   public Text interactText = null;
   public string customText = "";
   private Coroutine hideCustomCoroutine = null;
@@ -19,6 +19,16 @@ public class DialogManager : MonoBehaviour
     _instance = this;
   }
 
+  public static void ShowDialog (string text, float duration) {
+    DialogManager._instance._ShowDialog(text, duration);
+  }
+  public static void ShowDialog (string text, float duration, float interval) {
+    DialogManager._instance._ShowDialog(text, duration, interval);
+  }
+  public static void HideDialog () {
+    DialogManager._instance._HideDialog();
+  }
+
   public static void ShowCustomText(string text, float duration) {
     DialogManager._instance._ShowCustomText(text, duration);
   }
@@ -27,6 +37,18 @@ public class DialogManager : MonoBehaviour
     customText = text;
     if (hideCustomCoroutine != null) StopCoroutine(hideCustomCoroutine);
     hideCustomCoroutine = StartCoroutine(HideCustom(duration));
+  }
+  
+  private void _ShowDialog(string text, float duration) {
+    dialogParent.SetActive(true);
+    dialogText.ShowText(text, duration);
+  }
+  private void _ShowDialog(string text, float duration, float interval) {
+    dialogParent.SetActive(true);
+    dialogText.ShowText(text, duration, interval, true);
+  }
+  private void _HideDialog() {
+    dialogParent.SetActive(false);
   }
 
   private IEnumerator HideCustom (float duration) {

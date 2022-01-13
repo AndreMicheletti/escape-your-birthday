@@ -13,6 +13,8 @@ public class EventManager : MonoBehaviour {
 
   public delegate void GhostSeenAction();
   public static event GhostSeenAction OnSeenGhost;
+  public delegate void ReceiveFinalItemAction();
+  public static event ReceiveFinalItemAction OnReceivedFinalItem;
 
   public static void ItemsChanged (List<GameItem> items) {
     if (OnItemsChanged != null) OnItemsChanged(items);
@@ -24,6 +26,10 @@ public class EventManager : MonoBehaviour {
 
   public static void SeenGhost () {
     if (OnSeenGhost != null) OnSeenGhost();
+  }
+
+  public static void ReceivedFinalItem () {
+    if (OnReceivedFinalItem != null) OnReceivedFinalItem();
   }
 
   private void Awake() {
