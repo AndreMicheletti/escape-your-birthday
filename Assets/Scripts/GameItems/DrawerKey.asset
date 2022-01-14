@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DrawerKey
   m_EditorClassIdentifier: 
   id: 2
-  itemName: Drawer Key
+  itemName: Old Key
   guiSprite: {fileID: 0}
