@@ -17,6 +17,7 @@ public class RandomEvents : MonoBehaviour
   public Ghost ghost = null;
   public GameItem midgameItem = null;
   private Coroutine events = null;
+  private Coroutine closePeek = null;
   private int lastEvent = -1;
   private int ghostCount = 0;
   private System.Random rand = new System.Random();
@@ -36,6 +37,9 @@ public class RandomEvents : MonoBehaviour
     ghost.OnFound(false);
     eyesNode.SetActive(false);
     StopEvents();
+    sink.OnInteract(null);
+    ghost.SpawnGhost(3);
+    this.StopEvents();
     gameObject.SetActive(false);
   }
 
@@ -75,7 +79,6 @@ public class RandomEvents : MonoBehaviour
         case 0:
           Debug.Log("EVENT [Chair Move]");
           chairMove.OnInteract(null);
-          yield return new WaitForSeconds(Random.Range(2f, 4f));
           break;
         case 1:
           Debug.Log("EVENT [Cough]");
@@ -175,5 +178,15 @@ public class RandomEvents : MonoBehaviour
           break;
       }
     }
+  }
+
+  private void Update() {
+    if (eyePeekHole.IsMoved() && closePeek == null) closePeek = StartCoroutine(ClosePeekCoroutine());
+  }
+
+  private IEnumerator ClosePeekCoroutine() {
+    yield return new WaitForSeconds(6f);
+    if (eyePeekHole.IsMoved()) eyePeekHole.OnInteract(Player._instance);
+    closePeek = null;
   }
 }

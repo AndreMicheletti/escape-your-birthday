@@ -93,4 +93,8 @@ public class MoveInteract : MonoBehaviour, IInteractible
   public string GetDialogText() {
     return dialogText;
   }
+
+  public bool IsMoved() {
+    return moved;
+  }
 }
